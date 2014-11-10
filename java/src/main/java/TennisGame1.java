@@ -1,7 +1,7 @@
 public class TennisGame1 implements TennisGame {
 
 	private int player1Score = 0;
-	private int palyer2Score = 0;
+	private int player2Score = 0;
 	private String player1Name;
 	private String player2Name;
 
@@ -14,7 +14,7 @@ public class TennisGame1 implements TennisGame {
 		if (player1Name.equals(playerName)) {
 			player1Score += 1;
 		} else if (player2Name.equals(playerName)) {
-			palyer2Score += 1;
+			player2Score += 1;
 		} else {
 			throw new RuntimeException("Wrong player name " + playerName);
 		}
@@ -28,12 +28,12 @@ public class TennisGame1 implements TennisGame {
 		} else if (win()) {
 			return describeWin();
 		} else {
-			return describe(player1Score) + "-" + describe(palyer2Score);
+			return describe(player1Score) + "-" + describe(player2Score);
 		}
 	}
 
 	private String describeWin() {
-		if (player1Score > palyer2Score) {
+		if (player1Score > player2Score) {
 			return "Win for player1";
 		} else {
 			return "Win for player2";
@@ -41,7 +41,7 @@ public class TennisGame1 implements TennisGame {
 	}
 
 	private String describeAdvantages() {
-		if (player1Score > palyer2Score) {
+		if (player1Score > player2Score) {
 			return "Advantage player1";
 		} else {
 			return "Advantage player2";
@@ -57,7 +57,7 @@ public class TennisGame1 implements TennisGame {
 	}
 
 	private int scoreDifference() {
-		return Math.abs(player1Score - palyer2Score);
+		return Math.abs(player1Score - player2Score);
 	}
 
 	private String describeTie() {
@@ -89,10 +89,10 @@ public class TennisGame1 implements TennisGame {
 	}
 
 	private boolean advantagesOrWinPhase() {
-		return player1Score >= 4 || palyer2Score >= 4;
+		return player1Score >= 4 || player2Score >= 4;
 	}
 
 	private boolean sameScore() {
-		return player1Score == palyer2Score;
+		return player1Score == player2Score;
 	}
 }
