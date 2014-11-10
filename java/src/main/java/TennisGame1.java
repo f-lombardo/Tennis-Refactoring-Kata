@@ -52,30 +52,26 @@ public class TennisGame1 implements TennisGame {
         }
         else
         {
-        	int tempScore=0;
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
+           score = describe(m_score1) + "-" + describe(m_score2);
         }
         return score;
     }
+
+	private String describe(int aScore) {
+		switch(aScore)
+		{
+		    case 0:
+		        return "Love";
+		    case 1:
+		        return "Fifteen";
+		    case 2:
+		    	return "Thirty";
+		    case 3:
+		    	return "Forty";
+		    default:
+		    	throw new RuntimeException("Program error: unknown score" + aScore);
+		}
+	}
 
 	private boolean advantagesOrWinPhase() {
 		return m_score1>=4 || m_score2>=4;
